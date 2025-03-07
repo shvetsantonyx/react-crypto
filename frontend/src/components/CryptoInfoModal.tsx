@@ -1,6 +1,6 @@
 import { Divider, Tag, Typography } from 'antd';
 
-import { CryptoResultType } from '../api';
+import { CryptoResultType } from '../types';
 import { CoinUnfo } from './CoinInfo';
 
 export const CryptoInfoModal = ({

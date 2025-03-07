@@ -1,5 +1,5 @@
 import { Flex, Typography } from 'antd';
-import { CryptoResultType } from '../api';
+import { CryptoResultType } from '../types';
 
 export const CoinUnfo = ({
     coin,

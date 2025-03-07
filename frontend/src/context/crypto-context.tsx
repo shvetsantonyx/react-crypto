@@ -1,23 +1,8 @@
 import { createContext, useState, useEffect, useContext } from 'react';
-import { CryptoResultType, fakeFetchAssets, fakeFetchCrypto } from '../api';
+import { fakeFetchAssets, fakeFetchCrypto } from '../api';
 import { percentDifference } from '../utils';
-import { Asset } from '../api';
+import { Asset, CryptoResultType, CryptoContextType, Assets } from '../types';
 import { ReactElement } from 'react';
-
-type CryptoContextType = {
-    assets: Assets[];
-    crypto: CryptoResultType[];
-    loading: boolean;
-    addAsset: (newAsset: Asset) => void;
-};
-
-interface Assets extends Asset {
-    grow: boolean;
-    growPercent: number;
-    totalAmount: number;
-    totalProfit: number;
-    name: string;
-}
 
 export const CryptoContext = createContext<CryptoContextType>({
     assets: [],

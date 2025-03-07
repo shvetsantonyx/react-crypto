@@ -13,8 +13,11 @@ export const AppSider = () => {
 
     return (
         <Layout.Sider width="25%" style={siderStyle}>
-            {assets.map((asset) => (
-                <Card key={asset.id} style={{ marginBottom: '1rem' }}>
+            {assets.map((asset, index) => (
+                <Card
+                    key={`${asset.id}-${index}`}
+                    style={{ marginBottom: '1rem' }}
+                >
                     <Statistic
                         title={capitalize(asset.id)}
                         value={asset.totalAmount}

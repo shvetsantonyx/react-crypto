@@ -10,7 +10,7 @@ import {
     Result,
 } from 'antd';
 import { useCrypto } from '../context/crypto-context';
-import { Asset, CryptoResultType } from '../api';
+import { Asset, CryptoResultType } from '../types';
 import { CoinUnfo } from './CoinInfo';
 
 export type FieldType = {
@@ -79,7 +79,6 @@ export const AddAssetForm = ({ onClose }: { onClose: () => void }) => {
     }
 
     const onFinish = (values: FieldType) => {
-        console.log(values);
         const newAsset: Asset = {
             id: coin.id,
             amount: values.amount,

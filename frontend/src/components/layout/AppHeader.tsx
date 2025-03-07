@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Layout, Select, Space, Button, Modal, Drawer } from 'antd';
 import { useCrypto } from '../../context/crypto-context';
 import { CryptoInfoModal } from '../CryptoInfoModal';
-import { CryptoResultType } from '../../api';
+import { CryptoResultType } from '../../types';
 import { AddAssetForm } from '../AddAssetForm';
 
 const headerStyle: React.CSSProperties = {
@@ -37,8 +37,6 @@ export const AppHeader = () => {
         setCoin(crypto.find((c) => c!.id === value));
         setModal((prev) => !prev);
     };
-
-    console.log(select);
 
     return (
         <Layout.Header style={headerStyle}>

@@ -1,6 +1,7 @@
 import { Table } from 'antd';
 import type { TableColumnsType, TableProps } from 'antd';
 import { useCrypto } from '../context/crypto-context';
+import { Assets } from '../types';
 
 interface DataType {
     key: React.Key;
@@ -12,14 +13,25 @@ interface DataType {
 export const AssetsTable = () => {
     const { assets } = useCrypto();
 
+    const uniqAssets = (arr: Assets[]) => {
+        const names: string[] = [];
+        const temp = arr.filter((item) => {
+            if (!names.includes(item.name)) {
+                names.push(item.name);
+                return item;
+            }
+        });
+        return temp;
+    };
+
     const columns: TableColumnsType<DataType> = [
         {
             title: 'Name',
             dataIndex: 'name',
             showSorterTooltip: { target: 'full-header' },
-            filters: assets.map((asset) => ({
+            filters: uniqAssets(assets).map((asset) => ({
                 text: asset.name,
-                value: asset.id,
+                value: asset.name,
             })),
 
             // [
@@ -68,8 +80,8 @@ export const AssetsTable = () => {
         },
     ];
 
-    const data = assets.map((asset) => ({
-        key: asset.id,
+    const data = assets.map((asset, index) => ({
+        key: index,
         name: asset.name,
         price: asset.price,
         amount: asset.amount,
